@@ -4,9 +4,7 @@ import { forbidden } from "next/navigation";
 import Authorization from "@/components/oauth/authorization";
 
 export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-  const parsedSearchParams = await searchParams.catch(() => {
-    forbidden();
-  });
+  const parsedSearchParams = await searchParams;
   const parsed = OAuthSchema.safeParse(parsedSearchParams);
   if (!parsed.success) {
     forbidden();
