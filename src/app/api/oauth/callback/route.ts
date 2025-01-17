@@ -45,8 +45,7 @@ export const POST = async (req: NextRequest) => {
     }
 
     if (error instanceof HTTPError) {
-      console.error(await error.response.clone().json());
-      return NextResponse.json(handleKyError(error), { status: error.response.status });
+      return NextResponse.json(await handleKyError(error), { status: error.response.status });
     }
 
     return NextResponse.error();
